@@ -1,20 +1,15 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[] dial = {3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10};
         int answer = 0;
-        char[] input = sc.next().toCharArray();
-        for (char c : input) {
-            if (c <= 'C') answer += 3;
-            else if (c <= 'F') answer += 4;
-            else if (c <= 'I') answer += 5;
-            else if (c <= 'L') answer += 6;
-            else if (c <= 'O') answer += 7;
-            else if (c <= 'S') answer += 8;
-            else if (c <= 'V') answer += 9;
-            else answer += 10;
+
+        for (char c : br.readLine().toCharArray()) {
+            answer += dial[c - 'A'];
         }
+
         System.out.println(answer);
     }
 }
