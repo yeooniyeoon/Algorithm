@@ -5,16 +5,14 @@ class Solution {
         List<Integer> list = new ArrayList<Integer>();
 
         for (int[] command : commands) {
-            int startIdx = command[0] - 1;
-            int endIdx = command[1];
-            int targetIdx = command[2] - 1;
-
-            int[] subArr = Arrays.copyOfRange(array, startIdx, endIdx);
+            int[] subArr = Arrays.copyOfRange(array, command[0] - 1, command[1]);
             Arrays.sort(subArr);
 
-            list.add(subArr[targetIdx]);
+            list.add(subArr[command[2] - 1]);
         }
 
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        return list.stream()
+            .mapToInt(i -> i)
+            .toArray();
     }
 }
