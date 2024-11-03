@@ -5,7 +5,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-        sc.nextLine();
 
         HashSet<Integer> aSet = new HashSet<>();
         for (int i = 0; i < a; i++) {
@@ -17,20 +16,12 @@ public class Main {
             bSet.add(sc.nextInt());
         }
 
-        int count = 0;
-        for (int i : aSet) {
-            if (!bSet.contains(i)) {
-                count++;
-                bSet.add(i);
-            }
-        }
+        HashSet<Integer> diffAB = new HashSet<>(aSet);
+        diffAB.removeAll(bSet);
 
-        for (int i : bSet) {
-            if (!aSet.contains(i)) {
-                count++;
-            }
-        }
+        HashSet<Integer> diffBA = new HashSet<>(bSet);
+        diffBA.removeAll(aSet);
 
-        System.out.println(count);
+        System.out.println(diffAB.size() + diffBA.size());
     }
 }
